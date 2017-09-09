@@ -35,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void playAgain(View view) {
-
         score = 0;
         numberOfQuestions = 0;
 
@@ -44,10 +43,7 @@ public class MainActivity extends AppCompatActivity {
         txtResult.setText("");
         btnPlayAgain.setVisibility(INVISIBLE);
         btnStart.setVisibility(INVISIBLE);
-        btn0.setVisibility(VISIBLE);
-        btn1.setVisibility(VISIBLE);
-        btn2.setVisibility(VISIBLE);
-        btn3.setVisibility(VISIBLE);
+        showButtons();
         generateQuestion();
 
         new CountDownTimer(30100, 1000) {
@@ -59,10 +55,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFinish() {
-                btn0.setVisibility(INVISIBLE);
-                btn1.setVisibility(INVISIBLE);
-                btn2.setVisibility(INVISIBLE);
-                btn3.setVisibility(INVISIBLE);
+                hideButtons();
                 txtResult.setText("Done , Your score : " + score + "/" + numberOfQuestions);
                 txtTimer.setText("0s");
                 btnPlayAgain.setVisibility(VISIBLE);
@@ -133,10 +126,7 @@ public class MainActivity extends AppCompatActivity {
         txtPionts = (TextView) findViewById(R.id.txtPionts);
         txtTimer = (TextView) findViewById(R.id.txtTimer);
         btnPlayAgain = (Button) findViewById(R.id.btnPlayAgain);
-        btn0.setVisibility(INVISIBLE);
-        btn1.setVisibility(INVISIBLE);
-        btn2.setVisibility(INVISIBLE);
-        btn3.setVisibility(INVISIBLE);
+        hideButtons();
         btnStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -153,6 +143,20 @@ public class MainActivity extends AppCompatActivity {
 //        });
 
 
+    }
+
+    public void hideButtons() {
+        btn0.setVisibility(INVISIBLE);
+        btn1.setVisibility(INVISIBLE);
+        btn2.setVisibility(INVISIBLE);
+        btn3.setVisibility(INVISIBLE);
+    }
+
+    public void showButtons() {
+        btn0.setVisibility(VISIBLE);
+        btn1.setVisibility(VISIBLE);
+        btn2.setVisibility(VISIBLE);
+        btn3.setVisibility(VISIBLE);
     }
 
     @Override
